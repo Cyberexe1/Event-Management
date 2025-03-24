@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Calendar, ChevronRight, Award, Users, Sparkles } from 'lucide-react';
+import { Calendar, ChevronRight, Award, Users, Sparkles, UserCircle } from 'lucide-react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import EventCard from './components/EventCard';
 import Header from './components/Header';
@@ -31,6 +31,29 @@ function Home() {
       location: "Sports Complex",
       participants: "1000+ Athletes",
       image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80&w=1000",
+    }
+  ];
+
+  const developers = [
+    {
+      name: "Vikas Tiwari",
+      role: "Lead Developer",
+      icon: <UserCircle className="w-24 h-24 text-blue-600" />
+    },
+    {
+      name: "Utsav Singh",
+      role: "Frontend Developer",
+      icon: <UserCircle className="w-24 h-24 text-blue-600" />
+    },
+    {
+      name: "Om Singh",
+      role: "Backend Developer",
+      icon: <UserCircle className="w-24 h-24 text-blue-600" />
+    },
+    {
+      name: "Ankit Sharma",
+      role: "UI/UX Developer",
+      icon: <UserCircle className="w-24 h-24 text-blue-600" />
     }
   ];
 
@@ -169,6 +192,48 @@ function Home() {
                 Comprehensive analytics and feedback system for continuous improvement
               </p>
             </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Developer Team Section */}
+      <div className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Meet Our Development Team
+              </h2>
+              <p className="text-xl text-gray-600">
+                The talented developers behind our platform
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {developers.map((developer, index) => (
+              <motion.div
+                key={developer.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="flex justify-center mb-4">
+                  {developer.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  {developer.name}
+                </h3>
+                <p className="text-blue-600 font-medium">
+                  {developer.role}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
